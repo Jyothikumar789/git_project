@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("static/images/backgr.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .image-gallery {
+            text-align: center;
+        }
+
+        .image-gallery h2 {
+            font-size: 47px;
+            color: blue;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-family: "Algerian";
+            text-align: center;
+        }
+
+        .image-gallery p {
+            font-size: 35px;
+            color: orange;
+            margin-left: 10px;
+            margin-right: 30%;
+            font-family: "Bernard MT Condensed";
+            text-align: right;
+        }
+
+        .image-gallery h5 {
+            font-size: 35px;
+            color: rgb(60,200,113);
+            margin-left: 10px;
+            margin-right: 30%;
+            font-family: "Bernard MT Condensed";
+            text-align: right;
+        }
+
+        .form-container {
+            position: fixed;
+            top: 40%;
+            right: 1%;
+            transform: translate(-30%, -30%);
+        }
+
+        .form-wrapper {
+            max-width: 400px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-family: impact;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 80%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 70%;
+            padding: 5px;
+            margin-top: 5px;
+            background-color: skyblue;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        a:hover {
+            color: #000;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-gallery">
+            <h2>Image Gallery</h2>
+            <left>
+            <p>Welcome to our image gallery.<br><center><p style="color:white">Register and sign in<h5></center></p><h5>To explore a vast collection of stunning images.</h5></p>
+            </left>
+        </div>
+    </div>
+    
+    <div class="form-container">
+        <div class="form-wrapper">
+            <h1>REGISTER TO IMAGE GALLERY</h1>
+            <form action="/register" method="post" onsubmit="return validateForm()">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+    
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+    
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+    
+                <p id="usernameError" class="error-message"></p>
+                <p id="passwordError" class="error-message"></p>
+                
+                <button type="submit">Register</button>
+            </form>
+        
+            <p>Already have an account? <a href="/signin">Sign In</a></p>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var confirm_password = document.getElementById("confirm_password").value;
+            var usernameError = document.getElementById("usernameError");
+            var passwordError = document.getElementById("passwordError");
+            var valid = true;
+
+            // Validate username
+            var usernameRegex = /^[a-zA-Z0-9_]+$/;
+            if (!usernameRegex.test(username)) {
+                usernameError.innerText = "Invalid username. Only characters, numbers, and underscore are allowed.";
+                valid = false;
+            } else {
+                usernameError.innerText = "";
+            }
+
+            // Validate password
+            var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordRegex.test(password)) {
+                passwordError.innerText = "Invalid password. Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one number, and one special character.";
+                valid = false;
+            } else if (password !== confirm_password) {
+                passwordError.innerText = "Passwords do not match.";
+                valid = false;
+            } else {
+                passwordError.innerText = "";
+            }
+
+            return valid;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign In</title>
+    <style>
+        body {
+            background-image: url('static/images/backgr.png');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .password-page {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            
+        }
+        
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 100%; }
+        }
+        
+        h1 {
+            position: left;
+            bottom: 50px;
+            text-align: center;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .login-container {
+            position: relative;
+            z-index: 2;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 70%;
+            margin-left: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        
+        a {
+            display: block;
+            text-align: center;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #000;
+        }
+        
+        .error-message {
+            margin-top: 10px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="password-page">
+        <div class="disco"></div>
+        <div class="login-container">
+            <h1>----LOGIN FORM----</h1>
+            <CENTER>
+            <form action="/signin" method="post">
+                <label for="username">USERNAME</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="password">PASSWORD</label>
+                <input type="password" id="password" name="password" required>
+                
+                {% if msg %}
+                <p class="error-message">{{ msg }}</p>
+                {% endif %}
+                
+                <button type="submit">LOGIN IN</button>
+            </form>
+        </CENTER>
+        <h5>SUBMIT DETAIL AND GO TO GALLERY</H2>
+        </div>
+    </div>
+</body>
+</html>

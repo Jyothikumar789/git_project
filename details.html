@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #3a7bd5;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #fff;
+        }
+        
+        .details-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+        
+        p {
+            margin-bottom: 5px;
+            color: #555;
+        }
+        
+        a {
+            color: #337ab7;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .details-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
+        .details-table {
+            margin-bottom: 20px;
+        }
+        
+        .details-table th {
+            text-align: left;
+            font-weight: bold;
+            padding-right: 10px;
+            vertical-align: top;
+        }
+        
+        .details-table td {
+            padding-bottom: 5px;
+        }
+        
+        .dimensions {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #337ab7;
+            color: #fff;
+            border-radius: 4px;
+        }
+        
+        
+        .btn-delete {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #dc3545;
+            color: #fff;
+            margin-left:27px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Image Details</h1>
+    <div class="details-container">
+        <center>
+        <h2>Filename: {{ details.filename }}</h2>
+        <p>Size: {{ details.size }} bytes</p>
+       <center> <p>URL: <a href="{{ url_for('static', filename='uploads/' + details.filename) }}">VIEW IMAGE</a></p></center>
+        <center><img class="details-image" src="{{ url_for('static', filename='uploads/' + details.filename) }}" alt="Image" width="400" height="70"></center>
+        <table class="details-table">
+            <tr>
+                <th>FORMAT:</th>
+                <td>image format</td>
+            </tr>
+            <tr>
+                <th>COLOR MODE:</th>
+                <td>rgb</td>
+            </tr>
+            <tr>
+                <th>DIMENSIONS:</th>
+                <td><span class="dimensions">3000 x 1800</span></td>
+            </tr>
+        </table>
+        <div>
+            <a href="{{ url_for('delete', filename=details.filename) }}" class="btn-delete">Delete</a>
+            <a href="{{ url_for('index') }}" class="btn-back">Back to Gallery</a>
+        </div>
+    </div>
+</body>
+</html>

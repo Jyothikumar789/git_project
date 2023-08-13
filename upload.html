@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Image</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Upload Image</h1>
+    <div class="upload-container">
+        <form class="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" id="file-input" accept="image/*" required>
+            <button type="submit">Upload</button>
+            <p>Accepted file formats: JPG, PNG, GIF</p>
+        </form>
+    </div>
+</body>
+</html>
